@@ -1,0 +1,14 @@
+node js extends the capabilities of JS what possible  when running JS on browser.
+1. Access to file system:
+   a> Provide API to interact with file system, allowing you to read,write,delete and manipulate file and directories on server.
+     JS cannot do the same on browser.
+2. Networking capabilities:
+----------------------------
+ a> it enables the creation of web servers handles network request adn support low-level networking feature like creating TCP/UDP servers,
+    handling socket etc
+    JS in browser can make http request ,but it cannot create servers or handle loe level networking tasks.
+3. Process management:
+----------------------
+  a> It can manage multiple thread and handle system level task like interacting with OS processes.
+  JS is limited to run on single thread and cannot spawn processes or directly interact wth OS processes.
+  
