@@ -53,3 +53,26 @@ fs.writeFileSync(
   "Created new Folder and writing a file with flag append",
   { flag: "a" }
 );
+
+const { Worker } = require("worker_threads");
+console.time();
+new Worker("./a");
+new Worker("./b");
+new Worker("./c");
+
+for (let index = 0; index < 1000000; index++) {
+  if (index % 500000 == 0) {
+    console.log("b", index);
+  }
+}
+for (let index = 0; index < 1000000; index++) {
+  if (index % 500000 == 0) {
+    console.log("c", index);
+  }
+}
+for (let index = 0; index < 1000000; index++) {
+  if (index % 500000 == 0) {
+    console.log("a", index);
+  }
+}
+console.timeEnd();
