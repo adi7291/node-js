@@ -1,0 +1,22 @@
+In Node.js, every file is wrapped in its own private function, so variables stay in local (module) scope.
+Every .js file we create in Node.js is automatically wrapped like this.
+(function (exports, require, module, __filename, __dirname) {
+  
+  // Your entire file code is here
+
+})();
+
+var a = 10;
+
+It is actually:
+
+(function(){
+  var a = 10;   // Local to this function!
+})();
+
+In browser 
+var x=40; creates global variable accessible in window.x
+but in  NODE.js var x=100 will be accessible only in that file until we export it.Node js protecting code from global pollution.
+NOTE
+-----
+## Everything in Node.js is local because each file is wrapped in a private function (module wrapper) by default.
