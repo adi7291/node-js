@@ -1,0 +1,1 @@
+I am learning Node js course. fs.appendFileSync() will not overwrites the content of the file it append new content
