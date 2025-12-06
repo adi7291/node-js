@@ -1,5 +1,6 @@
 In Node.js, every file is wrapped in its own private function, so variables stay in local (module) scope.
 Every .js file we create in Node.js is automatically wrapped like this.
+
 (function (exports, require, module, __filename, __dirname) {
   
   // Your entire file code is here
