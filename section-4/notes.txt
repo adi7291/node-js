@@ -1,0 +1,35 @@
+Feature	Browser               JavaScript	                                    Node.js JavaScript
+=====================================================================================================
+Environment        	Runs inside a web browser (Chrome, Firefox, etc.)	   Runs on the server / system (outside the browser)
+Main purpose	      Build UI & interactivity for web pages	             Build servers, APIs, tools, scripts
+Global object           	window	                                                  global
+Example             	console.log(window)                                   	console.log(global)
+DOM access	             ✅ Has DOM (HTML, CSS control)	                        ❌ No DOM
+Example	               document.getElementById("id")	                            ❌ Not available
+File system            	❌ Cannot access user files directly	                     ✅ Can read/write files
+Example	                       Not allowed	                                    fs.readFileSync("file.txt")
+Modules	ES Modules:        import/export	                               CommonJS: require/module.exports (+ ES           
+                                                                                 Modules  supported)
+Example               	import sum from './sum.js'	                      const sum = require('./sum')
+APIs available	        Web APIs (fetch, location, history, DOM)	         Node APIs (fs, http, path, os)
+Example	                fetch(url)	                                         http.createServer()
+Security	               Sandbox – restricted	                                Full system access
+Multithreading	          Web Workers	                                      Worker Threads + libuv threadpool
+Event Loop              	Managed by browser	                                    Managed by libuv
+Top-level this	           this === window	                                  this === module.exports
+Scope of var	           Goes to global scope	                                      Module scoped
+Example                 	var a = 1 → window.a	                                    var a = 1 → NOT global
+
+js in browser
+-----------------
+document.getElementById("btn").addEventListener("click", () => {
+  alert("Button clicked!");
+});
+
+js in node 
+-------------
+const http = require("http");
+
+http.createServer((req, res) => {
+  res.end("Hello from Node");
+}).listen(3000);
