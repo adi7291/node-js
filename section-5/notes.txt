@@ -1,0 +1,25 @@
+## Since we have not used module type we cannot use ES module in node.
+import and export. we will be getting 
+SyntaxError: Cannot use import statement outside a module.
+
+
+we will create a package.json file and add
+{
+  type:module
+}
+
+## import.meta
+----------------
+
+it is special object when we use ES module which give information the current module (file)
+ at runtime. Similar ot __filename in commonJS
+ console.log(import.meta.url);
+ ===> file:///C:/Users/Ramesh/project/app.js
+
+we can add any property in import.meta
+
+import.meta.name="Ramesh"
+const {filename,dirname,name}=import.meta
+console.log(filename)
+console.log(dirname)
+console.log(name)
