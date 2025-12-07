@@ -1,2 +1,9 @@
 ## Since we have not used module type we cannot use ES module in node.
-import and export.
+import and export. we will be getting 
+SyntaxError: Cannot use import statement outside a module.
+
+
+we will create a package.json file and add
+{
+  type:module
+}
