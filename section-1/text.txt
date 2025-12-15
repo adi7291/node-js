@@ -1,1 +1,11 @@
 Hello world.
+
+## Node js is open source tools which let run javascript outside the window.
+--Built on V8 JS engine.
+-- Node js excels at handling many simultaneous connections without waiting for one to finish before starting another.
+This means it can keep working while waiting for tasks like reading files or talking to a database.
+
+##Node.js Architecture
+-----------------------
+Node JS uses single-threaded, event-driven architecture that is  designed to handle many connection at once,efficiently and without blocking the main thread.
+

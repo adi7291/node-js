@@ -1,0 +1,184 @@
+## Global Objects in Node.js
+============================
+These object are available in all modules without importing.
+1. Console
+console.log('Normal message)
+console.error('Error Message')
+console.warn('Warning Message')
+console.table([{name:'Ramesh',age:34},{name:'Anil',age:20}])
+console.time('timer')
+console.timeEnd('timer')
+2. Process
+//current directory
+console.log(process.cwd())
+//Environment variables
+console.log(process.env.PATH)
+//Platform Information
+console.log(process.platform)//win32,darwin,linux
+//Process Id
+console.log(process.pid)
+//Memory Usages
+console.log(process.memoryUsage())
+//Command Line Arguments
+console.log(process.argv)
+node app.js ramesh anil
+//['/path/to/node', '/path/to/app.js', 'ramesh', 'anil']
+
+console.log(__dirname)// Path of directory /home/user/myproject
+console.log(__filename)// path of file location /hime/user/app.js
+
+## Understanding Module System in Nodejs
+========================================
+Every file in Nodejs is a module.
+
+>>math.js
+---------
+function add(a,b)=>{
+  return a+b
+}
+function sub(a,b){
+  return a-b
+}
+function multiply(a,b){
+  return a*b
+}
+// Exporting individual function
+module.exports.add =add OR exports.add= add
+module.exports.sub=sub  OR exports.sub= sub
+module.exports.multiply=multiply
+
+//Exporting as an object
+module.exports ={
+  add:add,
+  sub:sub,
+  multiply:multiply
+}
+//as ES6 shorthand
+module.exports ={
+  add,
+  sub,
+  multiply
+}
+//exporting single function
+>>calculate.js
+--------------
+module.exports = function(income,expense){
+  return income-expense
+}
+
+## Importing a Module
+=====================
+//Import the entire module
+const math =require('./math')
+console.log(math.add(7,4))//11
+
+//Import with destructuring
+const {sub,multiply}=require('./math')
+console.log(sub(9,4))//5
+
+//Importing single function
+const calculate=require('./calculate')
+console.log(calculate(2000,500))//1500
+
+## Module Wrapper Function
+==========================
+Nodejs wraps every module inside a wrapper function before execution
+(function(exports,require,module,__dirname,__filename){
+  //module code come here
+})
+
+1. Nodejs operates on single thread but efficiently handles multiple concurrent requests using event loop.
+2. Client Send Request:: user or client send request to server for file access, data retrieval,
+DB queries.
+REQUEST
+=======
+ Blocking(synchronous)
+ Non-blocking(asynchronous)
+3. Node js receives multiple requests from multiple users. and add it to Event Queue.
+4. Theses Requests are processed in (FIFO First in first out) order.if the request is 
+   non-blocking(asynchronous), it is processed immediately and response sent back to to 
+   clients. If the Request is Blocking(synchronous) it is passed to THREAD POOL.
+5. The Thread POOL have limited number of Threads. if a thread is free the blocking(synchronous)
+    request is assigned to it.
+6. Once the request is processed the the thread returns back the result to EVENT LOOP
+   which then sends the response to the client.
+7. If all Threads are busy the new blocking requests must wait in a queue until a 
+   thread becomes free.
+8. This waiting increases the response time for client. Therefore it always better to avoid 
+   blocking operations and use non-blocking operations wherever possible to maintain 
+   performance and scalability.
+
+NOTE:: A thread is a worker which process blocking requests.
+
+The blocking or synchronous operations are executed one at a time in a specific sequence.
+The program waits until one task is completed to process the next request. like reading file
+or making network request.
+ console.log('first statement')
+ const readingContent = fs.readFileSync('./user.js','utf-8')
+ console.log('Reading file content',readingContent);
+ console.log('second statement')
+ console.log('third statement')
+
+ //first statement
+ //reading content from file
+ //second statement
+ //third statement
+
+##Non-Blocking or asynchronous operations
+=========================================
+In asynchronous operations tasks are executed without waiting for previous request.
+This increases the performance of the application.
+console.log('first')
+ fs.readFile('./user.js','utf-8',(err,readingContent)=>{
+  console.log('Reading content',readingContent)
+ })
+ console.log('second')
+ console.log('third')
+//first
+//second
+//third
+//reading content from the file.
+
+┌─────────────────────────────────────────────────┐
+│                  YOUR CODE                      │
+└─────────────────────────────────────────────────┘
+                        ↓
+         ┌──────────────────────────────┐
+         │   Synchronous Code Executes  │
+         │    (Call Stack processes)    │
+         └──────────────────────────────┘
+                        ↓
+    ┌───────────────────┴───────────────────┐
+    ↓                                       ↓
+BLOCKING CODE                      NON-BLOCKING CODE
+(Pauses execution)            (Doesn't pause execution)
+    ↓                                       ↓
+Wait for result          Send to OS (File System, etc.)
+    ↓                                       ↓
+Continue to              Continue to next line immediately
+next line                       ↓
+                         Code finishes
+                         (Call Stack empty)
+                              ↓
+                         Event Loop checks:
+                         "Any callbacks ready?"
+                              ↓
+                         Callback Queue has result
+                              ↓
+                         Event Loop moves callback
+                         to Call Stack
+                              ↓
+                         Callback executes
+
+
+// Please check notes folder blocking and nonBlocking file ::--
+--------------------------------------------------------------
+ * subse pehle node js pura file read karta h 
+ * uske bad jo bhi module (core module, custom module)ko memory me load karta h
+ * uske bad jitne bhi synchronous code h usko execute karta h 
+ * uske bad  2 conditions ho sakte hain jaise ki blocking code and non-blocking code aa sakte hain
+ *  agar blocking code hai to main thread block hoga aur nes=xt line pe code tub tak nahi jaega jub tak code execute na hua ho.
+ * agr non-blocking code h to main thread next line pe jaega aur execution pause nahi karega
+ * Event loop always check karega ki any call back is ready or not if callback Queue has result 
+ * to event loop moves callback to empty call stack and then we get output of the non-blocking like of code.
+ */
