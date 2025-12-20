@@ -182,3 +182,84 @@ next line                       ↓
  * Event loop always check karega ki any call back is ready or not if callback Queue has result 
  * to event loop moves callback to empty call stack and then we get output of the non-blocking like of code.
  */
+
+ ## What is WEB SERVER??
+ -------------------------
+
+ A web server is a software or hardware that stores, processes and delivers web content(files,data,services)
+ to client(browser) over internet using HTTP/HTTPs protocol.
+ Every web servers has an IP address and domain name.
+
+ https://www.geeksforgeeks.org/operating-systems/what-is-nginx-web-server-and-how-to-install-it/
+
+Domain Name:- https://www.geeksforgeeks.org
+/operating-systems/what-is-nginx-web-server-and-how-to-install-it/:- page we want to vivit on the above domain.
+
+how the process on web server works:::
+--------------------------------------
+-Client Request: A client or user place a request form web browser and enters a URL.
+-DNS Resolution: To get the IP address of the requested domain the browser contact the DNS(
+   Domain Name System) server.
+-Connecting to web server: Using the obtained IP address the browser establish a connection
+   with web server.
+-Processing Request: The web server receives a request and process it.
+-Serving the Response: The requested files(HTML,CSS,JS, Video, images) are sent back to the client's 
+   browser by the web server.
+-Rendering the web page: Based on the received data the browser display the web pages to the user.
+
+# Types of web servers
+----------------------
+Apache Web server , Nodejs, Nginx web server, Apache Tomcat, lighttpd,jigshaw sever etc..
+ 
+## Event Loop in Node js.
+----------------------------
+Javascript is a single threaded language, it uses Event Loop to manages 
+the execution of multiple task without blocking the main thread. 
+
+/**
+ * ==When JS Engine Starts executing code, it places it in Call Stack, where each line of code 
+ * executes one by one in LIFO(last in first out) order.
+ * ==Synchronous code executes immediately and sequentially. If Synchronous blocking code 
+ * encountered (like arithmetic and for loop etc..) Call Stack waits for its completion
+ * before moving to next line.
+ * ==Asynchronous code (like setTimeout(),fs,readFile(),fetch) or Promise.then()
+ * is not executed immediately  in the Call Stack. Instead it is handed to Web APIs
+ * (in browsers) or OS(in Nodejs) to handle in the background. The Call Stack 
+ * continues executing the next line of code without waiting.
+ * ==When asynchronous operation completes in background, its callback is placed in
+ * either:
+ * MICROTASK Queue: For Promises,async,await.
+ * CALLBACK Queue : for setTimeout(),setInterval(),fetch,callbacks,I/O operations and
+ * DOM events.
+ * Event Loop continuously check 
+ *  1.If Call Stack is Empty
+ *  2.If emo=pty, checks the Microtask Queue and executes all task in it
+ *  3.Once the Microtask Queue is empty,checks the Callback Queue and executes one task.
+ *  4.After execution repeats the cycle.
+ *  
+ * 
+ */
+
+ ## PROMISES in Javascript
+ =========================
+ -- A Promise is an object that represents a value that will be available
+   now later or never.
+ -- Promise solve the problem of callback hell or pyramid of Doom.
+ -- Promise has only one final state 
+       pending ---->still working
+       fulfilled----> Success
+       rejected----> failed
+
+Creating a Promise::::
+----------------------
+const promise = new Promise((resolve,reject)=>{
+  resolve ==> success
+   reject==> failure
+})
+
+const promise = new Promise((resolve, reject) => {
+  console.log(resolve); //[Function (anonymous)]
+  console.log(reject); //[Function (anonymous)]
+});
+
+console.log(promise); //Promise { <pending> }
