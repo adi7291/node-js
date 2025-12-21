@@ -1,0 +1,35 @@
+import num from "./math.js";
+^^^^^^
+
+SyntaxError: Cannot use import statement outside a module
+
+==>Node.js is treating your file as CommonJS, not ES Module. So import is not allowed.
+so we need to create package.json and tell that this is ES6 module
+
+===========================================================================================
+
+node:internal/modules/cjs/loader:1148
+  throw err;
+  ^
+Error: Cannot find module 'math'
+
+
+==>when we change the type to commonjs and try to require 'math'will get this error. this error means Node is not able to find the module
+To make this as module we need to create folder node_modules and move the file inside the node module. this will work for common js but not for 
+ES6 module.
+
+
+
+===========================================================================================
+
+Require stack:
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'math' imported from C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\section-1\app
+.js
+==> Node sees in app.js import num from 'math'
+Node interprets it as installed math package.
+we have to create a folder math in node_modules
+
+
