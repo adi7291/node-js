@@ -1,0 +1,38 @@
+##"this"
+========
+this keyword refer to object that called the function or this refers to a object that is currently executing the code.
+
+const eventOne = {
+  name:'Birthday Event',
+  printEvent (){
+    console.log(`w are celebrating ${this.name}`)
+
+  }
+}
+eventOne.printEvent()
+
+This refers to object(eventOne) which call the function or method(printEvent)
+------------------------------------------------------------------------------
+const eventTwo = {
+  name: "Anniversary Event",
+  guestList: ["Anil", "Gulchi", "Vikash"],
+  printGuestList() {
+    console.log(`Guest list for ${this.name}`); // ✓ this = eventTwo
+    
+    this.guestList.forEach(function (guest) {
+      // ❌ this = undefined (in strict mode) or window/global (in non-strict)
+      console.log(`${guest} is attending ${this.name}`);
+      // this.name = undefined
+    });
+  }
+};
+
+eventTwo.printGuestList();
+// forEach calls its callback function as regular function not as method of eventTwo
+
+When regular function is called without an object Context, this 
+a> undefined (in strict mode)
+b> window global (in non-strict mode)
+
+##Two Fix this problem we can use arrow function. Arrow function doesn't have
+their own this. They inherit this from the parent scope 
