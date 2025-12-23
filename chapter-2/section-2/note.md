@@ -12,3 +12,19 @@
 - { "express": "~4.18.2" }
 - allow only patch changes. Do not allow MAJOR and MINOR changes
 - { "express": "4.18.2" } exact version.
+
+## What is npx:
+
+- npx is a package runner that executes Node.js packages directly without
+  requiring global installation.
+- npm installs
+- npx executes
+
+- npx cmd │ ▼
+- Check node_modules/.bin │ ▼
+- Check local deps │ ▼
+- Check npx cache │ ▼
+- Download from npm │ ▼
+- Read "bin" │ ▼
+- Execute
+ 
