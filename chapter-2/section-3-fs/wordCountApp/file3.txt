@@ -1,0 +1,11 @@
+React.js is a popular open-source JavaScript library used for building fast, interactive, and scalable user interfaces, especially for single-page applications (SPAs). It was developed and is maintained by Facebook and a large community of developers. React focuses mainly on the view layer of an application and encourages a component-based architecture, where the UI is divided into small, reusable, and independent components.
+
+One of the core concepts of React is the Virtual DOM. Instead of updating the real DOM directly, React creates a lightweight copy called the Virtual DOM. When the application state changes, React compares the new Virtual DOM with the previous one using a process called diffing. Only the required changes are then updated in the real DOM, which significantly improves performance and makes UI updates faster and more efficient.
+
+React uses JSX (JavaScript XML), a syntax extension that allows developers to write HTML-like code inside JavaScript. JSX improves readability and makes it easier to visualize the UI structure. Under the hood, JSX is compiled into standard JavaScript function calls. React components can be written as functional components or class components, though functional components with Hooks are now the preferred approach.
+
+Props and state are fundamental to React’s data flow. Props are used to pass data from parent components to child components, while state represents mutable data that affects how a component renders. When state changes, React automatically re-renders the component. To manage state and side effects, React provides Hooks such as useState, useEffect, and useContext. Hooks allow developers to use React features without writing class components.
+
+React follows a unidirectional data flow, meaning data flows from parent to child, which makes applications easier to debug and maintain. For larger applications, external state management libraries like Redux or Zustand are often used. React also integrates well with modern tools such as Vite, Webpack, and frameworks like Next.js for server-side rendering and improved performance.
+
+Overall, React.js is widely used because of its simplicity, flexibility, strong ecosystem, and ability to build dynamic, high-performance user interfaces efficiently.

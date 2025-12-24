@@ -1,0 +1,22 @@
+6:20:58 pm
+
+ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+
+ Error: ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async createWrite (file:///C:/Users/ram17/Desktop/nodeJs-anurag/chapter-2/wordCountapp/errorLog.js:11:21)6:22:53 pm
+
+ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+
+ Error: ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async createWrite (file:///C:/Users/ram17/Desktop/nodeJs-anurag/chapter-2/wordCountapp/errorLog.js:11:21)6:23:31 pm
+
+ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+
+ Error: ENOENT: no such file or directory, open 'C:\Users\ram17\Desktop\nodeJs-anurag\chapter-2\wordCountapp\file11.txt'
+    at async open (node:internal/fs/promises:636:25)
+    at async Object.readFile (node:internal/fs/promises:1246:14)
+    at async createWrite (file:///C:/Users/ram17/Desktop/nodeJs-anurag/chapter-2/wordCountapp/errorLog.js:11:21)
