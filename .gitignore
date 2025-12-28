@@ -1,0 +1,5 @@
+# Dependencies
+node_modules/
+
+/vscode
+chapter-4/2-section/*.mp4
